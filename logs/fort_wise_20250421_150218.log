@@ -1,0 +1,52 @@
+2025-04-21 15:02:18,502 | INFO     | root:57 | Logging initialized with level INFO
+2025-04-21 15:02:18,502 | INFO     | root:58 | Log file: logs/fort_wise_20250421_150218.log
+2025-04-21 15:02:18,502 | INFO     | core.voice_processor:31 | Initializing Voice Processor...
+2025-04-21 15:02:18,503 | INFO     | core.stt:30 | Speech-to-Text module initialized
+2025-04-21 15:02:18,503 | INFO     | core.tts:30 | Text-to-Speech module initialized
+2025-04-21 15:02:18,503 | INFO     | core.knowledge_base:39 | FAISS index loaded from data/faiss_index/index.faiss
+2025-04-21 15:02:18,521 | INFO     | sentence_transformers.SentenceTransformer:211 | Use pytorch device_name: mps
+2025-04-21 15:02:18,521 | INFO     | sentence_transformers.SentenceTransformer:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-21 15:02:20,900 | INFO     | core.knowledge_base:50 | Sentence embedding model loaded
+2025-04-21 15:02:20,900 | INFO     | core.knowledge_base:58 | Loaded 7 text chunks from knowledge base
+2025-04-21 15:02:20,900 | INFO     | core.llm:37 | Language Model initialized with model: gpt-4o-mini
+2025-04-21 15:02:20,900 | INFO     | core.context_manager:24 | Context Manager initialized with max_history=10
+2025-04-21 15:02:20,901 | INFO     | core.voice_processor:43 | Voice Processor initialized successfully
+2025-04-21 15:02:20,901 | INFO     | __main__:36 | Voice processor initialized successfully
+2025-04-21 15:02:20,902 | INFO     | __main__:130 | Starting Fort Wise Voice AI Assistant on port 8000 (debug=True)
+2025-04-21 15:02:20,910 | WARNING  | werkzeug:97 |  * Debugger is active!
+2025-04-21 15:02:20,924 | INFO     | werkzeug:97 |  * Debugger PIN: 524-420-906
+2025-04-21 15:02:20,955 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 15:02:20] "GET / HTTP/1.1" 200 -
+2025-04-21 15:02:20,978 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 15:02:20] "GET /static/img/logo_3S.png HTTP/1.1" 200 -
+2025-04-21 15:02:20,979 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 15:02:20] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-04-21 15:02:20,979 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 15:02:20] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-04-21 15:02:21,687 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 15:02:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-21 15:02:43,187 | INFO     | __main__:71 | Audio saved to data/recordings/d71f1c6b-19e1-4290-a966-c97093c9a02c.wav, processing...
+2025-04-21 15:02:43,188 | INFO     | core.voice_processor:55 | Converting speech to text from data/recordings/d71f1c6b-19e1-4290-a966-c97093c9a02c.wav
+2025-04-21 15:02:43,188 | INFO     | core.stt:43 | Transcribing audio from data/recordings/d71f1c6b-19e1-4290-a966-c97093c9a02c.wav
+2025-04-21 15:02:50,757 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2025-04-21 15:02:50,760 | INFO     | core.stt:64 | Transcription successful: I want to know what exactly Fortwise is doing.
+...
+2025-04-21 15:02:50,760 | INFO     | __main__:75 | Transcribed text: I want to know what exactly Fortwise is doing.
+
+2025-04-21 15:02:50,760 | INFO     | core.voice_processor:77 | Retrieving context for query: I want to know what exactly Fortwise is doing.
+
+2025-04-21 15:02:50,761 | INFO     | core.knowledge_base:160 | Searching for: I want to know what exactly Fortwise is doing.
+
+2025-04-21 15:02:52,024 | INFO     | core.knowledge_base:191 | Found 5 relevant chunks
+2025-04-21 15:02:52,024 | INFO     | core.voice_processor:106 | Generating response with LLM
+2025-04-21 15:02:52,024 | INFO     | core.llm:52 | Generating response for query: I want to know what exactly Fortwise is doing.
+
+2025-04-21 15:02:53,857 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 15:02:53,869 | INFO     | core.llm:88 | Generated response: Fort Wise is a historic military outpost establish...
+2025-04-21 15:02:53,869 | INFO     | __main__:82 | Generated response: Fort Wise is a historic military outpost established in 1847, located in the southwestern United States. It serves to educate visitors about its role in protecting settlers and maintaining peace with Native American tribes during westward expansion. The fort features diverse natural environments and offers visitor information, including admission details and operating hours.
+2025-04-21 15:02:53,869 | INFO     | core.voice_processor:137 | Converting text to speech
+2025-04-21 15:02:53,870 | INFO     | core.tts:50 | Converting text to speech using voice: alloy, speed: 1.0
+2025-04-21 15:02:55,764 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2025-04-21 15:03:00,427 | INFO     | core.tts:67 | Speech synthesis successful, saved to data/recordings/6c09aa47-080e-455d-a94d-07d9f03b4360.wav
+2025-04-21 15:03:00,428 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 15:03:00] "POST /process_audio HTTP/1.1" 200 -
+2025-04-21 15:03:00,458 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 15:03:00] "[35m[1mGET /audio/6c09aa47-080e-455d-a94d-07d9f03b4360.wav HTTP/1.1[0m" 206 -
+2025-04-21 15:03:00,497 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 15:03:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-21 15:05:19,222 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 15:05:19] "GET / HTTP/1.1" 200 -
+2025-04-21 15:05:19,241 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 15:05:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-21 15:05:19,242 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 15:05:19] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-04-21 15:05:19,242 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 15:05:19] "GET /static/img/logo_3S.png HTTP/1.1" 200 -

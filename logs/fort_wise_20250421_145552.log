@@ -1,0 +1,7 @@
+2025-04-21 14:55:52,983 | INFO     | root:57 | Logging initialized with level INFO
+2025-04-21 14:55:52,983 | INFO     | root:58 | Log file: logs/fort_wise_20250421_145552.log
+2025-04-21 14:55:52,983 | INFO     | core.voice_processor:29 | Initializing Voice Processor...
+2025-04-21 14:55:52,983 | INFO     | core.stt:30 | Speech-to-Text module initialized
+2025-04-21 14:55:52,983 | INFO     | core.tts:30 | Text-to-Speech module initialized
+2025-04-21 14:55:52,984 | ERROR    | core.knowledge_base:37 | Error loading FAISS index: Error in Index *faiss::read_index(IOReader *, int) at /Users/runner/work/faiss-wheels/faiss-wheels/faiss/faiss/impl/index_read.cpp:532: Error: 'ret == (1)' failed: read error in data/faiss_index/index.faiss: 0 != 1 (Undefined error: 0)
+2025-04-21 14:55:52,984 | ERROR    | __main__:34 | Failed to initialize voice processor: Error in Index *faiss::read_index(IOReader *, int) at /Users/runner/work/faiss-wheels/faiss-wheels/faiss/faiss/impl/index_read.cpp:532: Error: 'ret == (1)' failed: read error in data/faiss_index/index.faiss: 0 != 1 (Undefined error: 0)

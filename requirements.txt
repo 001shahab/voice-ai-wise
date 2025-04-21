@@ -1,0 +1,24 @@
+# Web framework
+flask
+flask-cors
+
+# Audio processing
+pydub
+soundfile
+librosa
+
+# OpenAI APIs
+openai
+
+# Vector database
+faiss-cpu
+numpy
+sentence-transformers
+
+# Environment variables
+python-dotenv
+
+# Utilities
+requests
+tqdm
+pandas

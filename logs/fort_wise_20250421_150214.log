@@ -1,0 +1,21 @@
+2025-04-21 15:02:14,107 | INFO     | root:57 | Logging initialized with level INFO
+2025-04-21 15:02:14,107 | INFO     | root:58 | Log file: logs/fort_wise_20250421_150214.log
+2025-04-21 15:02:14,108 | INFO     | core.voice_processor:31 | Initializing Voice Processor...
+2025-04-21 15:02:14,108 | INFO     | core.stt:30 | Speech-to-Text module initialized
+2025-04-21 15:02:14,108 | INFO     | core.tts:30 | Text-to-Speech module initialized
+2025-04-21 15:02:14,108 | INFO     | core.knowledge_base:39 | FAISS index loaded from data/faiss_index/index.faiss
+2025-04-21 15:02:14,125 | INFO     | sentence_transformers.SentenceTransformer:211 | Use pytorch device_name: mps
+2025-04-21 15:02:14,126 | INFO     | sentence_transformers.SentenceTransformer:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-21 15:02:16,411 | INFO     | core.knowledge_base:50 | Sentence embedding model loaded
+2025-04-21 15:02:16,411 | INFO     | core.knowledge_base:58 | Loaded 7 text chunks from knowledge base
+2025-04-21 15:02:16,412 | INFO     | core.llm:37 | Language Model initialized with model: gpt-4o-mini
+2025-04-21 15:02:16,412 | INFO     | core.context_manager:24 | Context Manager initialized with max_history=10
+2025-04-21 15:02:16,412 | INFO     | core.voice_processor:43 | Voice Processor initialized successfully
+2025-04-21 15:02:16,412 | INFO     | __main__:36 | Voice processor initialized successfully
+2025-04-21 15:02:16,413 | INFO     | __main__:130 | Starting Fort Wise Voice AI Assistant on port 8000 (debug=True)
+2025-04-21 15:02:16,483 | INFO     | werkzeug:97 | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://192.168.32.237:8000
+2025-04-21 15:02:16,483 | INFO     | werkzeug:97 | [33mPress CTRL+C to quit[0m
+2025-04-21 15:02:16,484 | INFO     | werkzeug:97 |  * Restarting with stat
