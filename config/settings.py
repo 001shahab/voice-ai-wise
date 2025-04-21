@@ -25,7 +25,7 @@ ALLOWED_AUDIO_FORMATS = ['.wav', '.mp3', '.ogg', '.m4a', '.webm']
 STT_MODEL = "whisper-1"  # OpenAI Whisper model
 
 # LLM settings
-LLM_MODEL = "gpt-4o-mini"  # As specified in requirements
+LLM_MODEL = "o4-mini-2025-04-16"  # As specified in requirements
 LLM_TEMPERATURE = 0.7
 LLM_MAX_TOKENS = 500
 

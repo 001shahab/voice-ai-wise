@@ -1,0 +1,72 @@
+2025-04-21 17:03:17,235 | INFO     | root:57 | Logging initialized with level INFO
+2025-04-21 17:03:17,236 | INFO     | root:58 | Log file: logs/fort_wise_20250421_170317.log
+2025-04-21 17:03:17,236 | INFO     | core.voice_processor:31 | Initializing Voice Processor...
+2025-04-21 17:03:17,236 | INFO     | core.stt:30 | Speech-to-Text module initialized
+2025-04-21 17:03:17,236 | INFO     | core.tts:30 | Text-to-Speech module initialized
+2025-04-21 17:03:17,236 | INFO     | core.knowledge_base:36 | Found embeddings file in root directory: embeddings#cs200#co50.faiss
+2025-04-21 17:03:17,236 | INFO     | core.knowledge_base:56 | FAISS index loaded from data/faiss_index/index.faiss
+2025-04-21 17:03:17,253 | INFO     | sentence_transformers.SentenceTransformer:211 | Use pytorch device_name: mps
+2025-04-21 17:03:17,253 | INFO     | sentence_transformers.SentenceTransformer:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-21 17:03:19,661 | INFO     | core.knowledge_base:67 | Sentence embedding model loaded
+2025-04-21 17:03:19,662 | INFO     | core.knowledge_base:127 | Split knowledge base into 40 chunks
+2025-04-21 17:03:19,662 | INFO     | core.knowledge_base:75 | Loaded 40 text chunks from knowledge base
+2025-04-21 17:03:19,662 | INFO     | core.llm:49 | Language Model initialized with model: o4-mini-2025-04-16
+2025-04-21 17:03:19,662 | INFO     | core.context_manager:26 | Context Manager initialized with max_history=10
+2025-04-21 17:03:19,662 | INFO     | core.voice_processor:43 | Voice Processor initialized successfully
+2025-04-21 17:03:19,662 | INFO     | __main__:52 | Voice processor initialized successfully
+2025-04-21 17:03:19,663 | INFO     | __main__:200 | Starting Fort Wise Voice AI Assistant on port 8000 (debug=True)
+2025-04-21 17:03:19,674 | WARNING  | werkzeug:97 |  * Debugger is active!
+2025-04-21 17:03:19,686 | INFO     | werkzeug:97 |  * Debugger PIN: 524-420-906
+2025-04-21 17:03:19,812 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:03:19] "GET / HTTP/1.1" 200 -
+2025-04-21 17:03:19,850 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:03:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-21 17:03:19,852 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:03:19] "[36mGET /static/img/logo_3S.png HTTP/1.1[0m" 304 -
+2025-04-21 17:03:19,853 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:03:19] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-04-21 17:03:19,853 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:03:19] "[35m[1mGET /static/img/ABOUT_THIS.mp3 HTTP/1.1[0m" 206 -
+2025-04-21 17:03:30,544 | INFO     | __main__:87 | Audio saved to data/recordings/5be062ea-ee8f-4d79-8b04-9bed32c6291c.wav, processing...
+2025-04-21 17:03:30,544 | INFO     | core.voice_processor:55 | Converting speech to text from data/recordings/5be062ea-ee8f-4d79-8b04-9bed32c6291c.wav
+2025-04-21 17:03:30,544 | INFO     | core.stt:43 | Transcribing audio from data/recordings/5be062ea-ee8f-4d79-8b04-9bed32c6291c.wav
+2025-04-21 17:03:32,625 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2025-04-21 17:03:32,627 | INFO     | core.stt:64 | Transcription successful: Can you tell me about Fort Wise?
+...
+2025-04-21 17:03:32,627 | INFO     | __main__:91 | Transcribed text: Can you tell me about Fort Wise?
+
+2025-04-21 17:03:32,627 | INFO     | core.voice_processor:77 | Retrieving context for query: Can you tell me about Fort Wise?
+
+2025-04-21 17:03:32,628 | INFO     | core.knowledge_base:210 | Searching for: Can you tell me about Fort Wise?
+
+2025-04-21 17:03:33,085 | INFO     | core.knowledge_base:251 | Found 5 relevant chunks out of 7 total matches
+2025-04-21 17:03:33,085 | INFO     | core.voice_processor:106 | Generating response with LLM
+2025-04-21 17:03:33,085 | INFO     | core.llm:66 | Generating response for query: Can you tell me about Fort Wise?
+
+2025-04-21 17:03:39,135 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:03:39,138 | INFO     | core.llm:124 | Generated response: ...
+2025-04-21 17:03:39,138 | INFO     | __main__:115 | Generated response: 
+2025-04-21 17:03:39,138 | INFO     | core.voice_processor:146 | Converting text to speech
+2025-04-21 17:03:39,138 | INFO     | core.tts:50 | Converting text to speech using voice: ash, speed: 1.0
+2025-04-21 17:03:39,740 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 400 Bad Request"
+2025-04-21 17:03:39,743 | ERROR    | core.tts:71 | Error during speech synthesis: Error code: 400 - {'error': {'message': "[{'type': 'string_too_short', 'loc': ('body', 'input'), 'msg': 'String should have at least 1 character', 'input': '', 'ctx': {'min_length': 1}}]", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2025-04-21 17:03:39,743 | ERROR    | core.voice_processor:161 | Error in text-to-speech conversion: Error code: 400 - {'error': {'message': "[{'type': 'string_too_short', 'loc': ('body', 'input'), 'msg': 'String should have at least 1 character', 'input': '', 'ctx': {'min_length': 1}}]", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2025-04-21 17:03:39,743 | ERROR    | __main__:136 | Error processing audio: Error code: 400 - {'error': {'message': "[{'type': 'string_too_short', 'loc': ('body', 'input'), 'msg': 'String should have at least 1 character', 'input': '', 'ctx': {'min_length': 1}}]", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+Traceback (most recent call last):
+  File "/Users/shahab/Desktop/MySandBox/voice-ai-wise/app.py", line 118, in process_audio
+    audio_output_path = voice_processor.text_to_speech(text_response)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shahab/Desktop/MySandBox/voice-ai-wise/core/voice_processor.py", line 157, in text_to_speech
+    self.tts.synthesize(text, output_path)
+  File "/Users/shahab/Desktop/MySandBox/voice-ai-wise/core/tts.py", line 54, in synthesize
+    response = openai.audio.speech.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shahab/Desktop/MySandBox/voice-ai-wise/myenv/lib/python3.11/site-packages/openai/resources/audio/speech.py", line 102, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/shahab/Desktop/MySandBox/voice-ai-wise/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1276, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shahab/Desktop/MySandBox/voice-ai-wise/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 949, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/shahab/Desktop/MySandBox/voice-ai-wise/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1057, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "[{'type': 'string_too_short', 'loc': ('body', 'input'), 'msg': 'String should have at least 1 character', 'input': '', 'ctx': {'min_length': 1}}]", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2025-04-21 17:03:39,746 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:03:39] "[35m[1mPOST /process_audio HTTP/1.1[0m" 500 -
+2025-04-21 17:12:49,326 | INFO     | werkzeug:97 |  * Detected change in '/Users/shahab/Desktop/MySandBox/voice-ai-wise/core/voice_processor.py', reloading

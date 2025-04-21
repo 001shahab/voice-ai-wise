@@ -11,6 +11,7 @@ import uuid
 from flask import Flask, request, jsonify, render_template, send_from_directory
 from dotenv import load_dotenv
 import logging
+import shutil
 
 # Load environment variables from .env file
 load_dotenv()
@@ -18,6 +19,7 @@ load_dotenv()
 # Import core modules
 from core.voice_processor import VoiceProcessor
 from utils.logging_utils import setup_logger
+import manual_setup
 
 # Set up logging
 setup_logger()
@@ -25,6 +27,20 @@ logger = logging.getLogger(__name__)
 
 # Initialize the Flask application
 app = Flask(__name__, static_folder='static', template_folder='templates')
+
+# Run the manual setup if it's the first time
+if not os.path.exists(os.path.join('data', 'knowledge_base.txt')) or os.path.getsize(os.path.join('data', 'knowledge_base.txt')) == 0:
+    logger.info("First run detected, setting up knowledge base from Agent's manual")
+    try:
+        # Check if Agent's manual exists and copy it
+        if os.path.exists("Agent's manual.txt"):
+            os.makedirs('data', exist_ok=True)
+            shutil.copy("Agent's manual.txt", os.path.join('data', 'knowledge_base.txt'))
+            logger.info("Copied Agent's manual to knowledge base")
+        # Run the setup script
+        manual_setup.setup_knowledge_base()
+    except Exception as e:
+        logger.error(f"Error during first-time setup: {e}")
 
 # Initialize the voice processor
 try:
@@ -78,12 +94,28 @@ def process_audio():
         if not text_input or text_input.strip() == "":
             text_response = "I couldn't understand your question. Please try again."
             text_input = "[No speech detected]"
+        elif "what is my name" in text_input.lower() or "what's my name" in text_input.lower() or "who am i" in text_input.lower():
+            # Direct response for name-related queries
+            user_info = voice_processor.context_manager.get_user_info()
+            if user_info and "name" in user_info:
+                text_response = f"Your name is {user_info['name']}. How can I help you today?"
+                voice_processor.context_manager.add_exchange(text_input, text_response)
+            else:
+                # Get relevant context from knowledge base
+                context = voice_processor.retrieve_context(text_input)
+                # Generate response using LLM
+                text_response = voice_processor.generate_response(text_input, context)
         else:
             # Get relevant context from knowledge base
             context = voice_processor.retrieve_context(text_input)
             
             # Generate response using LLM
             text_response = voice_processor.generate_response(text_input, context)
+        
+        # Validate we have a response
+        if not text_response or text_response.strip() == "":
+            logger.warning("Empty response received from LLM, using fallback")
+            text_response = "I'm sorry, I couldn't generate a proper response. Please try asking again."
         
         logger.info(f"Generated response: {text_response}")
         
@@ -159,8 +191,9 @@ def upload_knowledge():
 def reset_context():
     """Reset the conversation context."""
     try:
-        voice_processor.reset_context()
-        return jsonify({'status': 'success', 'message': 'Context reset successfully'})
+        # Only reset conversation history, keep user information
+        voice_processor.context_manager.reset()
+        return jsonify({'status': 'success', 'message': 'Conversation reset successfully'})
     except Exception as e:
         logger.error(f"Error resetting context: {e}")
         return jsonify({'error': str(e)}), 500

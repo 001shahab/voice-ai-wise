@@ -22,3 +22,6 @@ python-dotenv
 requests
 tqdm
 pandas
+scikit-learn
+torch
+transformers

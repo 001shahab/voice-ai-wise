@@ -1,0 +1,253 @@
+2025-04-21 17:15:00,272 | INFO     | root:57 | Logging initialized with level INFO
+2025-04-21 17:15:00,272 | INFO     | root:58 | Log file: logs/fort_wise_20250421_171500.log
+2025-04-21 17:15:00,272 | INFO     | core.voice_processor:31 | Initializing Voice Processor...
+2025-04-21 17:15:00,272 | INFO     | core.stt:30 | Speech-to-Text module initialized
+2025-04-21 17:15:00,272 | INFO     | core.tts:30 | Text-to-Speech module initialized
+2025-04-21 17:15:00,272 | INFO     | core.knowledge_base:36 | Found embeddings file in root directory: embeddings#cs200#co50.faiss
+2025-04-21 17:15:00,272 | INFO     | core.knowledge_base:56 | FAISS index loaded from data/faiss_index/index.faiss
+2025-04-21 17:15:00,289 | INFO     | sentence_transformers.SentenceTransformer:211 | Use pytorch device_name: mps
+2025-04-21 17:15:00,289 | INFO     | sentence_transformers.SentenceTransformer:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-21 17:15:03,352 | INFO     | core.knowledge_base:67 | Sentence embedding model loaded
+2025-04-21 17:15:03,353 | INFO     | core.knowledge_base:127 | Split knowledge base into 40 chunks
+2025-04-21 17:15:03,353 | INFO     | core.knowledge_base:75 | Loaded 40 text chunks from knowledge base
+2025-04-21 17:15:03,353 | INFO     | core.llm:49 | Language Model initialized with model: o4-mini-2025-04-16
+2025-04-21 17:15:03,353 | INFO     | core.context_manager:26 | Context Manager initialized with max_history=10
+2025-04-21 17:15:03,353 | INFO     | core.voice_processor:43 | Voice Processor initialized successfully
+2025-04-21 17:15:03,353 | INFO     | __main__:52 | Voice processor initialized successfully
+2025-04-21 17:15:03,354 | INFO     | __main__:205 | Starting Fort Wise Voice AI Assistant on port 8000 (debug=True)
+2025-04-21 17:15:03,363 | WARNING  | werkzeug:97 |  * Debugger is active!
+2025-04-21 17:15:03,376 | INFO     | werkzeug:97 |  * Debugger PIN: 524-420-906
+2025-04-21 17:15:15,858 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:15:15] "GET / HTTP/1.1" 200 -
+2025-04-21 17:15:15,881 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:15:15] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-21 17:15:15,883 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:15:15] "[36mGET /static/img/logo_3S.png HTTP/1.1[0m" 304 -
+2025-04-21 17:15:15,884 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:15:15] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-04-21 17:15:15,884 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:15:15] "[35m[1mGET /static/img/ABOUT_THIS.mp3 HTTP/1.1[0m" 206 -
+2025-04-21 17:15:22,591 | INFO     | __main__:87 | Audio saved to data/recordings/9b512e3b-f8c8-4b3a-8904-7fc6ceea1efb.wav, processing...
+2025-04-21 17:15:22,592 | INFO     | core.voice_processor:55 | Converting speech to text from data/recordings/9b512e3b-f8c8-4b3a-8904-7fc6ceea1efb.wav
+2025-04-21 17:15:22,592 | INFO     | core.stt:43 | Transcribing audio from data/recordings/9b512e3b-f8c8-4b3a-8904-7fc6ceea1efb.wav
+2025-04-21 17:15:24,013 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2025-04-21 17:15:24,015 | INFO     | core.stt:64 | Transcription successful: What is Fort Wise?
+...
+2025-04-21 17:15:24,015 | INFO     | __main__:91 | Transcribed text: What is Fort Wise?
+
+2025-04-21 17:15:24,016 | INFO     | core.voice_processor:77 | Retrieving context for query: What is Fort Wise?
+
+2025-04-21 17:15:24,016 | INFO     | core.knowledge_base:210 | Searching for: What is Fort Wise?
+
+2025-04-21 17:15:24,164 | INFO     | core.knowledge_base:251 | Found 5 relevant chunks out of 7 total matches
+2025-04-21 17:15:24,164 | INFO     | core.voice_processor:106 | Generating response with LLM
+2025-04-21 17:15:24,164 | INFO     | core.llm:66 | Generating response for query: What is Fort Wise?
+
+2025-04-21 17:15:24,164 | INFO     | core.llm:107 | Sending request to OpenAI API with 2 messages
+2025-04-21 17:15:28,390 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:15:28,395 | WARNING  | core.llm:128 | Empty response from OpenAI API, using fallback
+2025-04-21 17:15:28,395 | INFO     | core.llm:140 | Generated response: I'm sorry, I couldn't generate a proper response t...
+2025-04-21 17:15:28,395 | INFO     | __main__:120 | Generated response: I'm sorry, I couldn't generate a proper response to your question. Could you please try asking in a different way?
+2025-04-21 17:15:28,395 | INFO     | core.voice_processor:146 | Converting text to speech
+2025-04-21 17:15:28,395 | INFO     | core.tts:55 | Converting text to speech using voice: ash, speed: 1.0
+2025-04-21 17:15:29,829 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2025-04-21 17:15:31,087 | INFO     | core.tts:73 | Speech synthesis successful, saved to data/recordings/a1fdd71f-162f-41ba-b164-106a6e9ec53b.wav
+2025-04-21 17:15:31,089 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:15:31] "POST /process_audio HTTP/1.1" 200 -
+2025-04-21 17:15:31,106 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:15:31] "[35m[1mGET /audio/a1fdd71f-162f-41ba-b164-106a6e9ec53b.wav HTTP/1.1[0m" 206 -
+2025-04-21 17:15:31,124 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:15:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-21 17:15:46,411 | INFO     | __main__:87 | Audio saved to data/recordings/539ee625-f83e-420d-aeb2-167f77183b23.wav, processing...
+2025-04-21 17:15:46,411 | INFO     | core.voice_processor:55 | Converting speech to text from data/recordings/539ee625-f83e-420d-aeb2-167f77183b23.wav
+2025-04-21 17:15:46,412 | INFO     | core.stt:43 | Transcribing audio from data/recordings/539ee625-f83e-420d-aeb2-167f77183b23.wav
+2025-04-21 17:15:47,603 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2025-04-21 17:15:47,603 | INFO     | core.stt:64 | Transcription successful: What is FortWise doing?
+...
+2025-04-21 17:15:47,604 | INFO     | __main__:91 | Transcribed text: What is FortWise doing?
+
+2025-04-21 17:15:47,604 | INFO     | core.voice_processor:77 | Retrieving context for query: What is FortWise doing?
+
+2025-04-21 17:15:47,604 | INFO     | core.knowledge_base:210 | Searching for: What is FortWise doing?
+
+2025-04-21 17:15:47,683 | INFO     | core.knowledge_base:251 | Found 5 relevant chunks out of 7 total matches
+2025-04-21 17:15:47,683 | INFO     | core.voice_processor:106 | Generating response with LLM
+2025-04-21 17:15:47,683 | INFO     | core.llm:66 | Generating response for query: What is FortWise doing?
+
+2025-04-21 17:15:47,683 | INFO     | core.llm:107 | Sending request to OpenAI API with 4 messages
+2025-04-21 17:15:53,207 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:15:53,210 | WARNING  | core.llm:128 | Empty response from OpenAI API, using fallback
+2025-04-21 17:15:53,210 | INFO     | core.llm:140 | Generated response: I'm sorry, I couldn't generate a proper response t...
+2025-04-21 17:15:53,211 | INFO     | __main__:120 | Generated response: I'm sorry, I couldn't generate a proper response to your question. Could you please try asking in a different way?
+2025-04-21 17:15:53,211 | INFO     | core.voice_processor:146 | Converting text to speech
+2025-04-21 17:15:53,211 | INFO     | core.tts:55 | Converting text to speech using voice: ash, speed: 1.0
+2025-04-21 17:15:54,265 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2025-04-21 17:15:55,725 | INFO     | core.tts:73 | Speech synthesis successful, saved to data/recordings/cc5cd183-a3fa-4dea-8d63-d06860e9fe18.wav
+2025-04-21 17:15:55,727 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:15:55] "POST /process_audio HTTP/1.1" 200 -
+2025-04-21 17:15:55,751 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:15:55] "[35m[1mGET /audio/cc5cd183-a3fa-4dea-8d63-d06860e9fe18.wav HTTP/1.1[0m" 206 -
+2025-04-21 17:16:07,440 | INFO     | __main__:87 | Audio saved to data/recordings/bac5593e-429d-4ba6-9b46-3c1bf7f634c5.wav, processing...
+2025-04-21 17:16:07,440 | INFO     | core.voice_processor:55 | Converting speech to text from data/recordings/bac5593e-429d-4ba6-9b46-3c1bf7f634c5.wav
+2025-04-21 17:16:07,440 | INFO     | core.stt:43 | Transcribing audio from data/recordings/bac5593e-429d-4ba6-9b46-3c1bf7f634c5.wav
+2025-04-21 17:16:08,606 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2025-04-21 17:16:08,607 | INFO     | core.stt:64 | Transcription successful: Who is the President of US?
+...
+2025-04-21 17:16:08,607 | INFO     | __main__:91 | Transcribed text: Who is the President of US?
+
+2025-04-21 17:16:08,607 | INFO     | core.voice_processor:77 | Retrieving context for query: Who is the President of US?
+
+2025-04-21 17:16:08,607 | INFO     | core.knowledge_base:210 | Searching for: Who is the President of US?
+
+2025-04-21 17:16:08,737 | INFO     | core.knowledge_base:251 | Found 5 relevant chunks out of 7 total matches
+2025-04-21 17:16:08,737 | INFO     | core.voice_processor:106 | Generating response with LLM
+2025-04-21 17:16:08,737 | INFO     | core.llm:66 | Generating response for query: Who is the President of US?
+
+2025-04-21 17:16:08,737 | INFO     | core.llm:107 | Sending request to OpenAI API with 6 messages
+2025-04-21 17:16:11,200 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:16:11,203 | INFO     | core.llm:140 | Generated response: The President of the United States is Joe Biden....
+2025-04-21 17:16:11,204 | INFO     | __main__:120 | Generated response: The President of the United States is Joe Biden.
+2025-04-21 17:16:11,204 | INFO     | core.voice_processor:146 | Converting text to speech
+2025-04-21 17:16:11,204 | INFO     | core.tts:55 | Converting text to speech using voice: ash, speed: 1.0
+2025-04-21 17:16:12,614 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2025-04-21 17:16:13,299 | INFO     | core.tts:73 | Speech synthesis successful, saved to data/recordings/b3b494a9-8d54-4bd8-9767-ecc6e25f4a62.wav
+2025-04-21 17:16:13,301 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:16:13] "POST /process_audio HTTP/1.1" 200 -
+2025-04-21 17:16:13,317 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:16:13] "[35m[1mGET /audio/b3b494a9-8d54-4bd8-9767-ecc6e25f4a62.wav HTTP/1.1[0m" 206 -
+2025-04-21 17:16:25,262 | INFO     | __main__:87 | Audio saved to data/recordings/85de523a-add1-4c6d-be82-14e82dd9aa7f.wav, processing...
+2025-04-21 17:16:25,262 | INFO     | core.voice_processor:55 | Converting speech to text from data/recordings/85de523a-add1-4c6d-be82-14e82dd9aa7f.wav
+2025-04-21 17:16:25,262 | INFO     | core.stt:43 | Transcribing audio from data/recordings/85de523a-add1-4c6d-be82-14e82dd9aa7f.wav
+2025-04-21 17:16:26,569 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2025-04-21 17:16:26,571 | INFO     | core.stt:64 | Transcription successful: Do you know anything about Fortwise AI?
+...
+2025-04-21 17:16:26,572 | INFO     | __main__:91 | Transcribed text: Do you know anything about Fortwise AI?
+
+2025-04-21 17:16:26,572 | INFO     | core.voice_processor:77 | Retrieving context for query: Do you know anything about Fortwise AI?
+
+2025-04-21 17:16:26,572 | INFO     | core.knowledge_base:210 | Searching for: Do you know anything about Fortwise AI?
+
+2025-04-21 17:16:26,654 | INFO     | core.knowledge_base:251 | Found 5 relevant chunks out of 7 total matches
+2025-04-21 17:16:26,654 | INFO     | core.voice_processor:106 | Generating response with LLM
+2025-04-21 17:16:26,655 | INFO     | core.llm:66 | Generating response for query: Do you know anything about Fortwise AI?
+
+2025-04-21 17:16:26,655 | INFO     | core.llm:107 | Sending request to OpenAI API with 8 messages
+2025-04-21 17:16:32,989 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:16:32,991 | WARNING  | core.llm:128 | Empty response from OpenAI API, using fallback
+2025-04-21 17:16:32,992 | INFO     | core.llm:140 | Generated response: I'm sorry, I couldn't generate a proper response t...
+2025-04-21 17:16:32,992 | INFO     | __main__:120 | Generated response: I'm sorry, I couldn't generate a proper response to your question. Could you please try asking in a different way?
+2025-04-21 17:16:32,992 | INFO     | core.voice_processor:146 | Converting text to speech
+2025-04-21 17:16:32,993 | INFO     | core.tts:55 | Converting text to speech using voice: ash, speed: 1.0
+2025-04-21 17:16:34,078 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2025-04-21 17:16:34,887 | INFO     | core.tts:73 | Speech synthesis successful, saved to data/recordings/98aa97ec-2e0b-4660-a53d-093b5fdbd830.wav
+2025-04-21 17:16:34,888 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:16:34] "POST /process_audio HTTP/1.1" 200 -
+2025-04-21 17:16:34,905 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:16:34] "[35m[1mGET /audio/98aa97ec-2e0b-4660-a53d-093b5fdbd830.wav HTTP/1.1[0m" 206 -
+2025-04-21 17:16:48,050 | INFO     | __main__:87 | Audio saved to data/recordings/89596b57-e44e-47c7-96fd-a228cbbab6bd.wav, processing...
+2025-04-21 17:16:48,050 | INFO     | core.voice_processor:55 | Converting speech to text from data/recordings/89596b57-e44e-47c7-96fd-a228cbbab6bd.wav
+2025-04-21 17:16:48,050 | INFO     | core.stt:43 | Transcribing audio from data/recordings/89596b57-e44e-47c7-96fd-a228cbbab6bd.wav
+2025-04-21 17:16:49,166 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2025-04-21 17:16:49,174 | INFO     | core.stt:64 | Transcription successful: Can you tell me a little bit about Relativity Theo...
+2025-04-21 17:16:49,174 | INFO     | __main__:91 | Transcribed text: Can you tell me a little bit about Relativity Theory?
+
+2025-04-21 17:16:49,174 | INFO     | core.voice_processor:77 | Retrieving context for query: Can you tell me a little bit about Relativity Theory?
+
+2025-04-21 17:16:49,174 | INFO     | core.knowledge_base:210 | Searching for: Can you tell me a little bit about Relativity Theory?
+
+2025-04-21 17:16:49,244 | INFO     | core.knowledge_base:251 | Found 0 relevant chunks out of 7 total matches
+2025-04-21 17:16:49,244 | INFO     | core.voice_processor:106 | Generating response with LLM
+2025-04-21 17:16:49,244 | INFO     | core.llm:66 | Generating response for query: Can you tell me a little bit about Relativity Theory?
+
+2025-04-21 17:16:49,244 | INFO     | core.llm:107 | Sending request to OpenAI API with 8 messages
+2025-04-21 17:16:54,978 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:16:54,980 | INFO     | core.llm:140 | Generated response: Albert Einstein’s theory of relativity actually co...
+2025-04-21 17:16:54,980 | INFO     | __main__:120 | Generated response: Albert Einstein’s theory of relativity actually comes in two parts:
+
+1. Special Relativity (1905)  
+   • Key idea: the laws of physics (including the speed of light) are the same for all non‑accelerating observers.  
+   • Consequences: time dilation (moving clocks tick more slowly), length contraction (moving objects shorten), and the famous equation E = mc².
+
+2. General Relativity (1915)  
+   • Extends relativity to include gravity by describing it as the warping of space and time (“spacetime”) by mass and energy.  
+   • Predicts phenomena like gravitational time dilation (clocks run slower near massive bodies), the bending of light around stars, and black holes.
+
+Why it matters today:  
+• GPS satellites must correct for both special and general relativistic effects to keep location data accurate.  
+• Modern astrophysics and cosmology—from predicting the expansion of the universe to detecting gravitational waves—rest on relativity’s framework.
+2025-04-21 17:16:54,980 | INFO     | core.voice_processor:146 | Converting text to speech
+2025-04-21 17:16:54,980 | INFO     | core.tts:55 | Converting text to speech using voice: ash, speed: 1.0
+2025-04-21 17:16:56,381 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2025-04-21 17:17:04,228 | INFO     | core.tts:73 | Speech synthesis successful, saved to data/recordings/24ac2a6c-af26-4542-bc1f-2c5f79c4211c.wav
+2025-04-21 17:17:04,229 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:04] "POST /process_audio HTTP/1.1" 200 -
+2025-04-21 17:17:04,248 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:04] "[35m[1mGET /audio/24ac2a6c-af26-4542-bc1f-2c5f79c4211c.wav HTTP/1.1[0m" 206 -
+2025-04-21 17:17:08,596 | INFO     | core.voice_processor:188 | Reinitializing knowledge base
+2025-04-21 17:17:08,596 | INFO     | core.knowledge_base:36 | Found embeddings file in root directory: embeddings#cs200#co50.faiss
+2025-04-21 17:17:08,596 | INFO     | core.knowledge_base:56 | FAISS index loaded from data/faiss_index/index.faiss
+2025-04-21 17:17:08,597 | INFO     | sentence_transformers.SentenceTransformer:211 | Use pytorch device_name: mps
+2025-04-21 17:17:08,597 | INFO     | sentence_transformers.SentenceTransformer:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-21 17:17:10,970 | INFO     | core.knowledge_base:67 | Sentence embedding model loaded
+2025-04-21 17:17:10,970 | INFO     | core.knowledge_base:127 | Split knowledge base into 40 chunks
+2025-04-21 17:17:10,970 | INFO     | core.knowledge_base:75 | Loaded 40 text chunks from knowledge base
+2025-04-21 17:17:10,970 | INFO     | core.voice_processor:193 | Knowledge base reinitialized successfully
+2025-04-21 17:17:10,970 | INFO     | __main__:178 | Knowledge base file uploaded and saved to data/knowledge_base.txt
+2025-04-21 17:17:10,970 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:10] "POST /upload_knowledge HTTP/1.1" 200 -
+2025-04-21 17:17:16,747 | INFO     | __main__:87 | Audio saved to data/recordings/53b2b8d1-5a9a-4328-916d-1429a9872996.wav, processing...
+2025-04-21 17:17:16,747 | INFO     | core.voice_processor:55 | Converting speech to text from data/recordings/53b2b8d1-5a9a-4328-916d-1429a9872996.wav
+2025-04-21 17:17:16,747 | INFO     | core.stt:43 | Transcribing audio from data/recordings/53b2b8d1-5a9a-4328-916d-1429a9872996.wav
+2025-04-21 17:17:17,838 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2025-04-21 17:17:17,839 | INFO     | core.stt:64 | Transcription successful: Can you tell me a little bit about sports life?
+...
+2025-04-21 17:17:17,839 | INFO     | __main__:91 | Transcribed text: Can you tell me a little bit about sports life?
+
+2025-04-21 17:17:17,839 | INFO     | core.voice_processor:77 | Retrieving context for query: Can you tell me a little bit about sports life?
+
+2025-04-21 17:17:17,839 | INFO     | core.knowledge_base:210 | Searching for: Can you tell me a little bit about sports life?
+
+2025-04-21 17:17:18,016 | INFO     | core.knowledge_base:251 | Found 0 relevant chunks out of 7 total matches
+2025-04-21 17:17:18,016 | INFO     | core.voice_processor:106 | Generating response with LLM
+2025-04-21 17:17:18,016 | INFO     | core.llm:66 | Generating response for query: Can you tell me a little bit about sports life?
+
+2025-04-21 17:17:18,016 | INFO     | core.llm:107 | Sending request to OpenAI API with 8 messages
+2025-04-21 17:17:22,688 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:17:22,692 | WARNING  | core.llm:128 | Empty response from OpenAI API, using fallback
+2025-04-21 17:17:22,692 | INFO     | core.llm:140 | Generated response: I'm sorry, I couldn't generate a proper response t...
+2025-04-21 17:17:22,693 | INFO     | __main__:120 | Generated response: I'm sorry, I couldn't generate a proper response to your question. Could you please try asking in a different way?
+2025-04-21 17:17:22,693 | INFO     | core.voice_processor:146 | Converting text to speech
+2025-04-21 17:17:22,693 | INFO     | core.tts:55 | Converting text to speech using voice: ash, speed: 1.0
+2025-04-21 17:17:23,676 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2025-04-21 17:17:24,238 | INFO     | core.tts:73 | Speech synthesis successful, saved to data/recordings/784a3217-fcf5-4350-8f0d-6af40bc32b43.wav
+2025-04-21 17:17:24,240 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:24] "POST /process_audio HTTP/1.1" 200 -
+2025-04-21 17:17:24,259 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:24] "[35m[1mGET /audio/784a3217-fcf5-4350-8f0d-6af40bc32b43.wav HTTP/1.1[0m" 206 -
+2025-04-21 17:17:26,511 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:26] "GET / HTTP/1.1" 200 -
+2025-04-21 17:17:26,533 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-21 17:17:26,533 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:26] "[36mGET /static/img/logo_3S.png HTTP/1.1[0m" 304 -
+2025-04-21 17:17:26,534 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:26] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-04-21 17:17:26,537 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:26] "[35m[1mGET /static/img/ABOUT_THIS.mp3 HTTP/1.1[0m" 206 -
+2025-04-21 17:17:26,538 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:26] "[35m[1mGET /static/img/ABOUT_THIS.mp3 HTTP/1.1[0m" 206 -
+2025-04-21 17:17:31,052 | INFO     | core.voice_processor:188 | Reinitializing knowledge base
+2025-04-21 17:17:31,053 | INFO     | core.knowledge_base:36 | Found embeddings file in root directory: embeddings#cs200#co50.faiss
+2025-04-21 17:17:31,053 | INFO     | core.knowledge_base:56 | FAISS index loaded from data/faiss_index/index.faiss
+2025-04-21 17:17:31,054 | INFO     | sentence_transformers.SentenceTransformer:211 | Use pytorch device_name: mps
+2025-04-21 17:17:31,055 | INFO     | sentence_transformers.SentenceTransformer:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-21 17:17:33,387 | INFO     | core.knowledge_base:67 | Sentence embedding model loaded
+2025-04-21 17:17:33,387 | INFO     | core.knowledge_base:127 | Split knowledge base into 40 chunks
+2025-04-21 17:17:33,387 | INFO     | core.knowledge_base:75 | Loaded 40 text chunks from knowledge base
+2025-04-21 17:17:33,387 | INFO     | core.voice_processor:193 | Knowledge base reinitialized successfully
+2025-04-21 17:17:33,387 | INFO     | __main__:178 | Knowledge base file uploaded and saved to data/knowledge_base.txt
+2025-04-21 17:17:33,388 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:33] "POST /upload_knowledge HTTP/1.1" 200 -
+2025-04-21 17:17:41,962 | INFO     | __main__:87 | Audio saved to data/recordings/76fa0e3a-dca5-48b4-9536-9052c85a9894.wav, processing...
+2025-04-21 17:17:41,962 | INFO     | core.voice_processor:55 | Converting speech to text from data/recordings/76fa0e3a-dca5-48b4-9536-9052c85a9894.wav
+2025-04-21 17:17:41,962 | INFO     | core.stt:43 | Transcribing audio from data/recordings/76fa0e3a-dca5-48b4-9536-9052c85a9894.wav
+2025-04-21 17:17:43,899 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2025-04-21 17:17:43,900 | INFO     | core.stt:64 | Transcription successful: Can you tell me about FortWise AI?
+...
+2025-04-21 17:17:43,901 | INFO     | __main__:91 | Transcribed text: Can you tell me about FortWise AI?
+
+2025-04-21 17:17:43,901 | INFO     | core.voice_processor:77 | Retrieving context for query: Can you tell me about FortWise AI?
+
+2025-04-21 17:17:43,901 | INFO     | core.knowledge_base:210 | Searching for: Can you tell me about FortWise AI?
+
+2025-04-21 17:17:43,964 | INFO     | core.knowledge_base:251 | Found 0 relevant chunks out of 7 total matches
+2025-04-21 17:17:43,964 | INFO     | core.voice_processor:106 | Generating response with LLM
+2025-04-21 17:17:43,964 | INFO     | core.llm:66 | Generating response for query: Can you tell me about FortWise AI?
+
+2025-04-21 17:17:43,964 | INFO     | core.llm:107 | Sending request to OpenAI API with 8 messages
+2025-04-21 17:17:48,860 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:17:48,863 | INFO     | core.llm:140 | Generated response: Fort Wise AI is a business‐focused AI agency that ...
+2025-04-21 17:17:48,863 | INFO     | __main__:120 | Generated response: Fort Wise AI is a business‐focused AI agency that helps companies implement intelligent solutions across sales, marketing and operations. Our flagship product, Alara, is an AI‑powered sales assistant that integrates with your CRM to automate lead qualification, personalize outreach and surface pipeline insights in real time. Beyond Alara, we offer custom AI consulting—everything from data strategy and model development to deployment and ongoing support. Many clients leverage our expertise to boost sales efficiency, improve customer engagement and unlock new revenue streams.  
+
+Would you like to learn more about Alara’s features or how we approach a typical engagement?
+2025-04-21 17:17:48,863 | INFO     | core.voice_processor:146 | Converting text to speech
+2025-04-21 17:17:48,864 | INFO     | core.tts:55 | Converting text to speech using voice: ash, speed: 1.0
+2025-04-21 17:17:50,124 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2025-04-21 17:17:59,388 | INFO     | core.tts:73 | Speech synthesis successful, saved to data/recordings/d7c40a71-2953-4f32-8993-8d92176287a8.wav
+2025-04-21 17:17:59,389 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:59] "POST /process_audio HTTP/1.1" 200 -
+2025-04-21 17:17:59,394 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:59] "[35m[1mGET /audio/d7c40a71-2953-4f32-8993-8d92176287a8.wav HTTP/1.1[0m" 206 -
+2025-04-21 17:17:59,412 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:17:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -

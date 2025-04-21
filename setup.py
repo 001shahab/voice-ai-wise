@@ -88,7 +88,7 @@ PORT=5000
 MAX_AUDIO_DURATION=30
 
 # Model Settings
-LLM_MODEL=gpt-4o-mini
+LLM_MODEL=o4-mini-2025-04-16
 TTS_VOICE=alloy
 """
         

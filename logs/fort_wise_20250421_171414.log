@@ -1,0 +1,52 @@
+2025-04-21 17:14:14,058 | INFO     | root:57 | Logging initialized with level INFO
+2025-04-21 17:14:14,058 | INFO     | root:58 | Log file: logs/fort_wise_20250421_171414.log
+2025-04-21 17:14:14,058 | INFO     | core.voice_processor:31 | Initializing Voice Processor...
+2025-04-21 17:14:14,058 | INFO     | core.stt:30 | Speech-to-Text module initialized
+2025-04-21 17:14:14,058 | INFO     | core.tts:30 | Text-to-Speech module initialized
+2025-04-21 17:14:14,058 | INFO     | core.knowledge_base:36 | Found embeddings file in root directory: embeddings#cs200#co50.faiss
+2025-04-21 17:14:14,059 | INFO     | core.knowledge_base:56 | FAISS index loaded from data/faiss_index/index.faiss
+2025-04-21 17:14:14,076 | INFO     | sentence_transformers.SentenceTransformer:211 | Use pytorch device_name: mps
+2025-04-21 17:14:14,076 | INFO     | sentence_transformers.SentenceTransformer:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-21 17:14:16,693 | INFO     | core.knowledge_base:67 | Sentence embedding model loaded
+2025-04-21 17:14:16,693 | INFO     | core.knowledge_base:127 | Split knowledge base into 40 chunks
+2025-04-21 17:14:16,693 | INFO     | core.knowledge_base:75 | Loaded 40 text chunks from knowledge base
+2025-04-21 17:14:16,693 | INFO     | core.llm:49 | Language Model initialized with model: o4-mini-2025-04-16
+2025-04-21 17:14:16,693 | INFO     | core.context_manager:26 | Context Manager initialized with max_history=10
+2025-04-21 17:14:16,694 | INFO     | core.voice_processor:43 | Voice Processor initialized successfully
+2025-04-21 17:14:16,694 | INFO     | __main__:52 | Voice processor initialized successfully
+2025-04-21 17:14:16,695 | INFO     | __main__:205 | Starting Fort Wise Voice AI Assistant on port 8000 (debug=True)
+2025-04-21 17:14:16,706 | WARNING  | werkzeug:97 |  * Debugger is active!
+2025-04-21 17:14:16,722 | INFO     | werkzeug:97 |  * Debugger PIN: 524-420-906
+2025-04-21 17:14:19,752 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:14:19] "GET / HTTP/1.1" 200 -
+2025-04-21 17:14:19,774 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:14:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-21 17:14:19,776 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:14:19] "[36mGET /static/img/logo_3S.png HTTP/1.1[0m" 304 -
+2025-04-21 17:14:19,776 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:14:19] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-04-21 17:14:19,776 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:14:19] "[35m[1mGET /static/img/ABOUT_THIS.mp3 HTTP/1.1[0m" 206 -
+2025-04-21 17:14:28,802 | INFO     | __main__:87 | Audio saved to data/recordings/d8731f9c-a1f1-45b7-82a5-95df17f653a7.wav, processing...
+2025-04-21 17:14:28,803 | INFO     | core.voice_processor:55 | Converting speech to text from data/recordings/d8731f9c-a1f1-45b7-82a5-95df17f653a7.wav
+2025-04-21 17:14:28,803 | INFO     | core.stt:43 | Transcribing audio from data/recordings/d8731f9c-a1f1-45b7-82a5-95df17f653a7.wav
+2025-04-21 17:14:30,884 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2025-04-21 17:14:30,888 | INFO     | core.stt:64 | Transcription successful: What is Fortwise?
+...
+2025-04-21 17:14:30,888 | INFO     | __main__:91 | Transcribed text: What is Fortwise?
+
+2025-04-21 17:14:30,888 | INFO     | core.voice_processor:77 | Retrieving context for query: What is Fortwise?
+
+2025-04-21 17:14:30,888 | INFO     | core.knowledge_base:210 | Searching for: What is Fortwise?
+
+2025-04-21 17:14:31,050 | INFO     | core.knowledge_base:251 | Found 5 relevant chunks out of 7 total matches
+2025-04-21 17:14:31,050 | INFO     | core.voice_processor:106 | Generating response with LLM
+2025-04-21 17:14:31,050 | INFO     | core.llm:66 | Generating response for query: What is Fortwise?
+
+2025-04-21 17:14:31,050 | INFO     | core.llm:107 | Sending request to OpenAI API with 2 messages
+2025-04-21 17:14:31,625 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-04-21 17:14:31,628 | ERROR    | core.llm:145 | Error during response generation: Error code: 400 - {'error': {'message': "Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}
+2025-04-21 17:14:31,629 | INFO     | __main__:120 | Generated response: I'm sorry, I encountered an error while processing your request. Please try again.
+2025-04-21 17:14:31,629 | INFO     | core.voice_processor:146 | Converting text to speech
+2025-04-21 17:14:31,630 | INFO     | core.tts:55 | Converting text to speech using voice: ash, speed: 1.0
+2025-04-21 17:14:33,196 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2025-04-21 17:14:33,205 | INFO     | core.tts:73 | Speech synthesis successful, saved to data/recordings/4d7aa286-740a-4d7c-983d-07d7f020ace6.wav
+2025-04-21 17:14:33,207 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:14:33] "POST /process_audio HTTP/1.1" 200 -
+2025-04-21 17:14:33,221 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:14:33] "[35m[1mGET /audio/4d7aa286-740a-4d7c-983d-07d7f020ace6.wav HTTP/1.1[0m" 206 -
+2025-04-21 17:14:33,230 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 17:14:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-21 17:14:57,583 | INFO     | werkzeug:97 |  * Detected change in '/Users/shahab/Desktop/MySandBox/voice-ai-wise/core/llm.py', reloading

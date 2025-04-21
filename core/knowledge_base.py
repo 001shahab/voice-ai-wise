@@ -9,6 +9,7 @@ import os
 import logging
 import numpy as np
 import faiss
+import shutil
 from typing import List, Dict, Any, Optional
 from sentence_transformers import SentenceTransformer
 
@@ -28,6 +29,22 @@ class KnowledgeBase:
         # Set default paths if not provided
         self.index_path = index_path or os.path.join('data', 'faiss_index', 'index.faiss')
         self.kb_path = kb_path or os.path.join('data', 'knowledge_base.txt')
+        
+        # Check if we have the embeddings file in the root directory
+        root_embeddings_path = "embeddings#cs200#co50.faiss"
+        if os.path.exists(root_embeddings_path):
+            logger.info(f"Found embeddings file in root directory: {root_embeddings_path}")
+            
+            # Create directory if it doesn't exist
+            os.makedirs(os.path.dirname(self.index_path), exist_ok=True)
+            
+            # Copy the embeddings file to the default location if it doesn't exist
+            if not os.path.exists(self.index_path):
+                try:
+                    shutil.copy(root_embeddings_path, self.index_path)
+                    logger.info(f"Copied embeddings from {root_embeddings_path} to {self.index_path}")
+                except Exception as e:
+                    logger.error(f"Error copying embeddings file: {e}")
         
         # Ensure the knowledge base file exists with sample data if not present
         self._ensure_knowledge_base_exists()
@@ -73,8 +90,41 @@ class KnowledgeBase:
         with open(self.kb_path, 'r', encoding='utf-8') as file:
             content = file.read()
         
-        # Simple chunk splitting (in production, would use more sophisticated methods)
-        chunks = [chunk.strip() for chunk in content.split('\n\n') if chunk.strip()]
+        # More sophisticated chunk splitting for better retrieval
+        # Split by sections based on headers and reasonable chunk sizes
+        lines = content.split('\n')
+        chunks = []
+        current_chunk = []
+        current_chunk_size = 0
+        
+        for line in lines:
+            # If line is a potential header (short line with no ending punctuation)
+            is_header = len(line.strip()) < 80 and not line.strip().endswith(('.', '?', '!', ',', ';', ':'))
+            
+            # If we have a large enough chunk and this is a header, start a new chunk
+            if current_chunk_size > 300 and is_header:
+                chunks.append('\n'.join(current_chunk).strip())
+                current_chunk = []
+                current_chunk_size = 0
+            
+            # Add the line to the current chunk
+            current_chunk.append(line)
+            current_chunk_size += len(line)
+            
+            # If current chunk is very large, split it
+            if current_chunk_size > 1000:
+                chunks.append('\n'.join(current_chunk).strip())
+                current_chunk = []
+                current_chunk_size = 0
+        
+        # Add the last chunk if not empty
+        if current_chunk:
+            chunks.append('\n'.join(current_chunk).strip())
+        
+        # Filter out empty chunks
+        chunks = [chunk for chunk in chunks if chunk.strip()]
+        
+        logger.info(f"Split knowledge base into {len(chunks)} chunks")
         return chunks
         
     def _ensure_knowledge_base_exists(self):
@@ -175,8 +225,8 @@ Fort Wise is open to visitors daily from 9am to 5pm from April through October, 
             query_vector = self.model.encode([enhanced_query])[0]
             query_vector = np.array([query_vector]).astype('float32')
             
-            # Search the index
-            distances, indices = self.index.search(query_vector, k=n_results)
+            # Search the index - increase number of results for filtering
+            distances, indices = self.index.search(query_vector, k=n_results * 2)
             
             # Collect results
             results = []
@@ -188,8 +238,19 @@ Fort Wise is open to visitors daily from 9am to 5pm from April through October, 
                         "index": int(idx)
                     })
             
-            logger.info(f"Found {len(results)} relevant chunks")
-            return results
+            # Filter results by relevance score threshold
+            threshold = 1.5  # Adjust based on your embedding model
+            relevant_results = [r for r in results if r["score"] < threshold]
+            
+            # Sort by relevance score (lower is better)
+            relevant_results.sort(key=lambda x: x["score"])
+            
+            # Limit to requested number
+            relevant_results = relevant_results[:n_results]
+            
+            logger.info(f"Found {len(relevant_results)} relevant chunks out of {len(results)} total matches")
+            
+            return relevant_results
             
         except Exception as e:
             logger.error(f"Error during knowledge base search: {e}")

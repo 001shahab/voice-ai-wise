@@ -109,11 +109,15 @@ class VoiceProcessor:
             # Get conversation history
             conversation_history = self.context_manager.get_history()
             
+            # Get user information
+            user_info = self.context_manager.get_user_info()
+            
             # Generate response
             response = self.llm.generate_response(
                 query=query,
                 context=context,
-                conversation_history=conversation_history
+                conversation_history=conversation_history,
+                user_info=user_info
             )
             
             # Update conversation context
@@ -124,6 +128,11 @@ class VoiceProcessor:
             logger.error(f"Error generating response: {e}")
             raise
     
+    def reset_context(self):
+        """Reset the conversation context."""
+        logger.info("Resetting conversation context")
+        self.context_manager.reset()
+
     def text_to_speech(self, text: str) -> str:
         """
         Convert text to speech.
@@ -137,6 +146,11 @@ class VoiceProcessor:
         logger.info("Converting text to speech")
         
         try:
+            # Validate text is not empty
+            if not text or text.strip() == "":
+                logger.warning("Empty text received for TTS, using fallback message")
+                text = "I'm sorry, I couldn't generate a proper response. Please try asking again."
+            
             # Generate a unique filename
             filename = f"{uuid.uuid4()}.wav"
             output_path = os.path.join('data', 'recordings', filename)

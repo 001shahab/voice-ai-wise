@@ -47,7 +47,13 @@ class TextToSpeech:
         voice = voice or self.voice
         speed = speed or self.speed
         
+        # Validate text is not empty
+        if not text or text.strip() == "":
+            logger.error("Empty text provided to TTS, using fallback message")
+            text = "I'm sorry, I couldn't generate a proper response. Please try asking again."
+        
         logger.info(f"Converting text to speech using voice: {voice}, speed: {speed}")
+        logger.debug(f"Text to convert: '{text[:100]}...'")
         
         try:
             # Call OpenAI TTS API

@@ -1,0 +1,20 @@
+2025-04-21 17:13:23,898 | INFO     | root:57 | Logging initialized with level INFO
+2025-04-21 17:13:23,898 | INFO     | root:58 | Log file: logs/fort_wise_20250421_171323.log
+2025-04-21 17:13:23,898 | INFO     | core.voice_processor:31 | Initializing Voice Processor...
+2025-04-21 17:13:23,898 | INFO     | core.stt:30 | Speech-to-Text module initialized
+2025-04-21 17:13:23,898 | INFO     | core.tts:30 | Text-to-Speech module initialized
+2025-04-21 17:13:23,898 | INFO     | core.knowledge_base:36 | Found embeddings file in root directory: embeddings#cs200#co50.faiss
+2025-04-21 17:13:23,898 | INFO     | core.knowledge_base:56 | FAISS index loaded from data/faiss_index/index.faiss
+2025-04-21 17:13:23,917 | INFO     | sentence_transformers.SentenceTransformer:211 | Use pytorch device_name: mps
+2025-04-21 17:13:23,917 | INFO     | sentence_transformers.SentenceTransformer:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-21 17:13:26,461 | INFO     | core.knowledge_base:67 | Sentence embedding model loaded
+2025-04-21 17:13:26,461 | INFO     | core.knowledge_base:127 | Split knowledge base into 40 chunks
+2025-04-21 17:13:26,461 | INFO     | core.knowledge_base:75 | Loaded 40 text chunks from knowledge base
+2025-04-21 17:13:26,461 | INFO     | core.llm:49 | Language Model initialized with model: gpt-4o-mini
+2025-04-21 17:13:26,461 | INFO     | core.context_manager:26 | Context Manager initialized with max_history=10
+2025-04-21 17:13:26,461 | INFO     | core.voice_processor:43 | Voice Processor initialized successfully
+2025-04-21 17:13:26,462 | INFO     | __main__:52 | Voice processor initialized successfully
+2025-04-21 17:13:26,462 | INFO     | __main__:205 | Starting Fort Wise Voice AI Assistant on port 8000 (debug=True)
+2025-04-21 17:13:26,473 | WARNING  | werkzeug:97 |  * Debugger is active!
+2025-04-21 17:13:26,487 | INFO     | werkzeug:97 |  * Debugger PIN: 524-420-906
+2025-04-21 17:13:31,775 | INFO     | werkzeug:97 |  * Detected change in '/Users/shahab/Desktop/MySandBox/voice-ai-wise/core/tts.py', reloading
