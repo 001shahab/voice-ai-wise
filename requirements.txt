@@ -7,8 +7,10 @@ pydub
 soundfile
 librosa
 
-# OpenAI APIs
-openai
+# OpenAI SDK
+openai==1.58.1
+# WSGI server for production
+gunicorn
 
 # Vector database
 faiss-cpu
