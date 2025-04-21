@@ -151,8 +151,32 @@ class VoiceProcessor:
         except Exception as e:
             logger.error(f"Error in text-to-speech conversion: {e}")
             raise
+        logger.info("Converting text to speech")
+        
+        try:
+            # Generate a unique filename
+            filename = f"{uuid.uuid4()}.wav"
+            output_path = os.path.join('data', 'recordings', filename)
+            
+            # Make sure directory exists
+            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+            
+            # Convert text to speech
+            self.tts.synthesize(text, output_path)
+            
+            return output_path
+        except Exception as e:
+            logger.error(f"Error in text-to-speech conversion: {e}")
+            raise
     
-    def reset_context(self):
-        """Reset the conversation context."""
-        logger.info("Resetting conversation context")
-        self.context_manager.reset()
+    def reinitialize_knowledge_base(self):
+        """Reinitialize the knowledge base after file upload."""
+        logger.info("Reinitializing knowledge base")
+        
+        try:
+            # Recreate knowledge base
+            self.knowledge_base = KnowledgeBase()
+            logger.info("Knowledge base reinitialized successfully")
+        except Exception as e:
+            logger.error(f"Error reinitializing knowledge base: {e}")
+            raise

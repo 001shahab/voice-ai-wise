@@ -51,11 +51,11 @@ class SpeechToText:
         try:
             # Open audio file
             with open(audio_path, "rb") as audio_file:
-                # Call OpenAI Whisper API
+                # Call OpenAI Whisper API - force English
                 response = openai.audio.transcriptions.create(
                     model="whisper-1",
                     file=audio_file,
-                    language=language,
+                    language="en",  # Force English language
                     response_format="text"
                 )
                 

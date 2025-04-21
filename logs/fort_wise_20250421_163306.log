@@ -1,0 +1,57 @@
+2025-04-21 16:33:06,980 | INFO     | root:57 | Logging initialized with level INFO
+2025-04-21 16:33:06,980 | INFO     | root:58 | Log file: logs/fort_wise_20250421_163306.log
+2025-04-21 16:33:06,981 | INFO     | core.voice_processor:31 | Initializing Voice Processor...
+2025-04-21 16:33:06,981 | INFO     | core.stt:30 | Speech-to-Text module initialized
+2025-04-21 16:33:06,981 | INFO     | core.tts:30 | Text-to-Speech module initialized
+2025-04-21 16:33:06,981 | INFO     | core.knowledge_base:39 | FAISS index loaded from data/faiss_index/index.faiss
+2025-04-21 16:33:06,999 | INFO     | sentence_transformers.SentenceTransformer:211 | Use pytorch device_name: mps
+2025-04-21 16:33:06,999 | INFO     | sentence_transformers.SentenceTransformer:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-21 16:33:09,650 | INFO     | core.knowledge_base:50 | Sentence embedding model loaded
+2025-04-21 16:33:09,651 | INFO     | core.knowledge_base:58 | Loaded 7 text chunks from knowledge base
+2025-04-21 16:33:09,651 | INFO     | core.llm:37 | Language Model initialized with model: gpt-4o-mini
+2025-04-21 16:33:09,651 | INFO     | core.context_manager:24 | Context Manager initialized with max_history=10
+2025-04-21 16:33:09,651 | INFO     | core.voice_processor:43 | Voice Processor initialized successfully
+2025-04-21 16:33:09,651 | INFO     | __main__:36 | Voice processor initialized successfully
+2025-04-21 16:33:09,652 | INFO     | __main__:166 | Starting Fort Wise Voice AI Assistant on port 8000 (debug=True)
+2025-04-21 16:33:09,661 | WARNING  | werkzeug:97 |  * Debugger is active!
+2025-04-21 16:33:09,679 | INFO     | werkzeug:97 |  * Debugger PIN: 524-420-906
+2025-04-21 16:34:50,230 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:34:50] "GET / HTTP/1.1" 200 -
+2025-04-21 16:34:50,246 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:34:50] "[33mGET /static/img/ABOUT_THIS.mp3 HTTP/1.1[0m" 404 -
+2025-04-21 16:34:50,257 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:34:50] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-04-21 16:34:50,257 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:34:50] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-04-21 16:34:50,257 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:34:50] "[36mGET /static/img/logo_3S.png HTTP/1.1[0m" 304 -
+2025-04-21 16:34:56,057 | INFO     | core.voice_processor:151 | Reinitializing knowledge base
+2025-04-21 16:34:56,059 | INFO     | core.knowledge_base:39 | FAISS index loaded from data/faiss_index/index.faiss
+2025-04-21 16:34:56,060 | INFO     | sentence_transformers.SentenceTransformer:211 | Use pytorch device_name: mps
+2025-04-21 16:34:56,060 | INFO     | sentence_transformers.SentenceTransformer:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-21 16:34:58,505 | INFO     | core.knowledge_base:50 | Sentence embedding model loaded
+2025-04-21 16:34:58,506 | INFO     | core.knowledge_base:58 | Loaded 77 text chunks from knowledge base
+2025-04-21 16:34:58,506 | INFO     | core.voice_processor:156 | Knowledge base reinitialized successfully
+2025-04-21 16:34:58,506 | INFO     | __main__:140 | Knowledge base file uploaded and saved to data/knowledge_base.txt
+2025-04-21 16:34:58,507 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:34:58] "POST /upload_knowledge HTTP/1.1" 200 -
+2025-04-21 16:35:07,563 | INFO     | __main__:71 | Audio saved to data/recordings/9bab80e5-4110-4ee9-a220-332906402890.wav, processing...
+2025-04-21 16:35:07,563 | INFO     | core.voice_processor:55 | Converting speech to text from data/recordings/9bab80e5-4110-4ee9-a220-332906402890.wav
+2025-04-21 16:35:07,564 | INFO     | core.stt:43 | Transcribing audio from data/recordings/9bab80e5-4110-4ee9-a220-332906402890.wav
+2025-04-21 16:35:10,751 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2025-04-21 16:35:10,753 | INFO     | core.stt:64 | Transcription successful: Hei, kerro minulle hieman tästä asiakasmanuaalista...
+2025-04-21 16:35:10,754 | INFO     | __main__:75 | Transcribed text: Hei, kerro minulle hieman tästä asiakasmanuaalista, kiitos.
+
+2025-04-21 16:35:10,754 | INFO     | core.voice_processor:77 | Retrieving context for query: Hei, kerro minulle hieman tästä asiakasmanuaalista, kiitos.
+
+2025-04-21 16:35:10,754 | INFO     | core.knowledge_base:160 | Searching for: Hei, kerro minulle hieman tästä asiakasmanuaalista, kiitos.
+
+2025-04-21 16:35:11,028 | INFO     | core.knowledge_base:191 | Found 5 relevant chunks
+2025-04-21 16:35:11,028 | INFO     | core.voice_processor:106 | Generating response with LLM
+2025-04-21 16:35:11,028 | INFO     | core.llm:52 | Generating response for query: Hei, kerro minulle hieman tästä asiakasmanuaalista, kiitos.
+
+2025-04-21 16:35:16,002 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 16:35:16,011 | INFO     | core.llm:97 | Generated response: Fort Wise is an agency that specializes in AI solu...
+2025-04-21 16:35:16,011 | INFO     | __main__:82 | Generated response: Fort Wise is an agency that specializes in AI solutions for businesses. The customer manual outlines key processes like Business Analysis and Needs Establishment (BANE), implementation, and continuous maintenance. The BANE phase involves the CEO, CTO, and BAs/PMs diving into the client's business to create a scope and detailed implementation plan. The implementation is controlled by the CTO with a focus on SCRUM processes, and maintenance involves ongoing support from developers. If you have specific questions about any section, feel free to ask!
+2025-04-21 16:35:16,012 | ERROR    | __main__:103 | Error processing audio: 'VoiceProcessor' object has no attribute 'text_to_speech'
+Traceback (most recent call last):
+  File "/Users/shahab/Desktop/MySandBox/voice-ai-wise/app.py", line 85, in process_audio
+    audio_output_path = voice_processor.text_to_speech(text_response)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'VoiceProcessor' object has no attribute 'text_to_speech'
+2025-04-21 16:35:16,013 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:35:16] "[35m[1mPOST /process_audio HTTP/1.1[0m" 500 -
+2025-04-21 16:37:18,237 | INFO     | werkzeug:97 |  * Detected change in '/Users/shahab/Desktop/MySandBox/voice-ai-wise/core/stt.py', reloading

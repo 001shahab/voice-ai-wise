@@ -32,6 +32,9 @@ class LanguageModel:
         Your answers should be based ONLY on the provided context from the Fort Wise knowledge base.
         If you don't know the answer based on the provided context, say so politely.
         Keep your responses concise and clear, as they will be spoken to the user.
+        
+        IMPORTANT: Always respond in English regardless of the language of the query.
+        If you receive a query in a language other than English, still respond in English only.
         """
         
         logger.info(f"Language Model initialized with model: {self.model}")
@@ -55,9 +58,18 @@ class LanguageModel:
             # Format context for prompt
             formatted_context = "\n\n".join([item["chunk"] for item in context])
             
+            # Check if any relevant context was found
+            context_found = len(context) > 0 and any(item["score"] < 1.0 for item in context)
+            
             # Create messages for OpenAI API
+            system_prompt = self.system_prompt
+            
+            # Modify system prompt if no relevant context found
+            if not context_found:
+                system_prompt += "\n\nIf no relevant information is found in the context, start your response with: 'The answer is not in my uploaded knowledge, but I think...' and then provide your best answer based on your general knowledge."
+            
             messages = [
-                {"role": "system", "content": self.system_prompt}
+                {"role": "system", "content": system_prompt}
             ]
             
             # Add conversation history for context

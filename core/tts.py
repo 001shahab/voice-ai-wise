@@ -24,7 +24,7 @@ class TextToSpeech:
         
         # TTS settings
         self.model = "tts-1"  # Default model
-        self.voice = "alloy"  # Default voice: options are 'alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer'
+        self.voice = "ash"  # Default voice: options are 'alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer'
         self.speed = 1.0      # Default speed (0.25 to 4.0)
         
         logger.info("Text-to-Speech module initialized")

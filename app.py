@@ -74,11 +74,17 @@ def process_audio():
         text_input = voice_processor.speech_to_text(save_path)
         logger.info(f"Transcribed text: {text_input}")
         
-        # Get relevant context from knowledge base
-        context = voice_processor.retrieve_context(text_input)
+        # Check if we got any text
+        if not text_input or text_input.strip() == "":
+            text_response = "I couldn't understand your question. Please try again."
+            text_input = "[No speech detected]"
+        else:
+            # Get relevant context from knowledge base
+            context = voice_processor.retrieve_context(text_input)
+            
+            # Generate response using LLM
+            text_response = voice_processor.generate_response(text_input, context)
         
-        # Generate response using LLM
-        text_response = voice_processor.generate_response(text_input, context)
         logger.info(f"Generated response: {text_response}")
         
         # Convert text to speech
@@ -108,6 +114,47 @@ def serve_audio(filename):
     """Serve generated audio files."""
     return send_from_directory(os.path.join('data', 'recordings'), filename)
 
+@app.route('/upload_knowledge', methods=['POST'])
+def upload_knowledge():
+    """
+    Handle knowledge base file upload.
+    
+    Uploads and saves a text file to use as the knowledge base.
+    """
+    try:
+        # Check if file is in the request
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file provided'}), 400
+        
+        file = request.files['file']
+        
+        # Check if filename is empty
+        if file.filename == '':
+            return jsonify({'error': 'No file selected'}), 400
+        
+        # Check file extension
+        if not file.filename.lower().endswith('.txt'):
+            return jsonify({'error': 'Only .txt files are allowed'}), 400
+        
+        # Save the file
+        file_path = os.path.join('data', 'knowledge_base.txt')
+        file.save(file_path)
+        
+        # Reinitialize the knowledge base
+        voice_processor.reinitialize_knowledge_base()
+        
+        logger.info(f"Knowledge base file uploaded and saved to {file_path}")
+        
+        return jsonify({
+            'status': 'success',
+            'message': 'Knowledge base file uploaded successfully',
+            'filename': file.filename
+        })
+        
+    except Exception as e:
+        logger.error(f"Error uploading knowledge base file: {e}", exc_info=True)
+        return jsonify({'error': str(e)}), 500
+
 @app.route('/reset_context', methods=['POST'])
 def reset_context():
     """Reset the conversation context."""
@@ -117,11 +164,6 @@ def reset_context():
     except Exception as e:
         logger.error(f"Error resetting context: {e}")
         return jsonify({'error': str(e)}), 500
-
-@app.route('/health')
-def health_check():
-    """Health check endpoint."""
-    return jsonify({'status': 'healthy', 'timestamp': time.time()})
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

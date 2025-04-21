@@ -1,0 +1,18 @@
+2025-04-21 16:37:21,590 | INFO     | root:57 | Logging initialized with level INFO
+2025-04-21 16:37:21,590 | INFO     | root:58 | Log file: logs/fort_wise_20250421_163721.log
+2025-04-21 16:37:21,591 | INFO     | core.voice_processor:31 | Initializing Voice Processor...
+2025-04-21 16:37:21,591 | INFO     | core.stt:30 | Speech-to-Text module initialized
+2025-04-21 16:37:21,591 | INFO     | core.tts:30 | Text-to-Speech module initialized
+2025-04-21 16:37:21,591 | INFO     | core.knowledge_base:39 | FAISS index loaded from data/faiss_index/index.faiss
+2025-04-21 16:37:21,608 | INFO     | sentence_transformers.SentenceTransformer:211 | Use pytorch device_name: mps
+2025-04-21 16:37:21,608 | INFO     | sentence_transformers.SentenceTransformer:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-21 16:37:26,191 | INFO     | core.knowledge_base:50 | Sentence embedding model loaded
+2025-04-21 16:37:26,192 | INFO     | core.knowledge_base:58 | Loaded 77 text chunks from knowledge base
+2025-04-21 16:37:26,192 | INFO     | core.llm:37 | Language Model initialized with model: gpt-4o-mini
+2025-04-21 16:37:26,192 | INFO     | core.context_manager:24 | Context Manager initialized with max_history=10
+2025-04-21 16:37:26,192 | INFO     | core.voice_processor:43 | Voice Processor initialized successfully
+2025-04-21 16:37:26,192 | INFO     | __main__:36 | Voice processor initialized successfully
+2025-04-21 16:37:26,193 | INFO     | __main__:166 | Starting Fort Wise Voice AI Assistant on port 8000 (debug=True)
+2025-04-21 16:37:26,204 | WARNING  | werkzeug:97 |  * Debugger is active!
+2025-04-21 16:37:26,220 | INFO     | werkzeug:97 |  * Debugger PIN: 524-420-906
+2025-04-21 16:37:33,581 | INFO     | werkzeug:97 |  * Detected change in '/Users/shahab/Desktop/MySandBox/voice-ai-wise/core/llm.py', reloading

@@ -10,6 +10,9 @@ A voice-enabled AI assistant that can answer questions about Fort Wise using a k
 - **Voice Output**: Converts responses to natural-sounding speech
 - **Conversation History**: Supports follow-up questions with context memory
 - **Clean Web Interface**: Intuitive UI with audio recording and playback
+- **Custom Knowledge Base**: Upload your own knowledge base text file
+- **Fallback Responses**: Provides answers based on general knowledge when no context is found
+- **Audio Explanation**: Includes an audio explanation of how the system works
 
 ## Architecture
 
@@ -65,11 +68,22 @@ pip install -r requirements.txt
 4. Set up environment variables by editing the `.env` file:
 ```
 OPENAI_API_KEY=your_openai_api_key_here
+ELEVENLABS_API_KEY=your_elevenlabs_api_key_here  # Optional, for about audio
 ```
 
-5. Make sure you have the necessary data files:
-   - Place your knowledge base text file in `data/knowledge_base.txt`
-   - Place your pre-computed FAISS index in `data/faiss_index/index.faiss`
+5. Run the setup script to create necessary directories and files:
+```bash
+python setup.py
+```
+
+6. (Optional) Generate the About audio file using ElevenLabs:
+```bash
+python download_about_audio.py
+```
+
+7. Alternatively, you can place your own audio file at `static/img/ABOUT_THIS.mp3`
+
+Note: The application will automatically create a sample knowledge base and FAISS index if none exists. You can also upload your own knowledge base through the web interface.
 
 ## Usage
 
@@ -136,4 +150,4 @@ This application processes voice data and sends it to OpenAI for transcription a
 
 ## Contributor
 
-Developed by Prof. Shahab Anbarjafari - Tartu, Estonia.
+Designed and developed by Prof. Shahab Anbarjafari - Tartu, Estonia.

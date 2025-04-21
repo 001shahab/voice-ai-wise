@@ -16,13 +16,29 @@
 </head>
 <body>
     <div class="container">
-        <header class="text-center my-4">
+        <header class="text-center my-4 position-relative">
+            <button id="helpButton" class="btn btn-light help-button" data-bs-toggle="modal" data-bs-target="#aboutModal">
+                <i class="fas fa-question-circle"></i>
+            </button>
             <h1>Fort Wise Voice AI Assistant</h1>
             <p class="lead">Ask questions about Fort Wise using your voice</p>
         </header>
         
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <!-- Knowledge Base Upload -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Upload Knowledge Base (Optional)</h5>
+                        <p class="card-text small">Upload a .txt file with your content. The AI will use this to answer questions.</p>
+                        <div class="input-group">
+                            <input type="file" class="form-control" id="knowledgeFile" accept=".txt">
+                            <button class="btn btn-outline-primary" type="button" id="uploadButton">Upload</button>
+                        </div>
+                        <div id="uploadStatus" class="mt-2 small"></div>
+                    </div>
+                </div>
+                
                 <div class="card main-card">
                     <div class="card-body">
                         <!-- Conversation display -->
@@ -68,6 +84,32 @@
                 
                 <div class="text-center mt-3">
                     <p><small>Made with <i class="fas fa-heart text-danger"></i> for Fort Wise</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- About Modal -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aboutModalLabel">About Fort Wise Voice AI</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="audio-wave-container" id="audioWaveAnimation">
+                        <div class="audio-wave">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <audio id="aboutAudio" src="{{ url_for('static', filename='img/ABOUT_THIS.mp3') }}" style="display: none;"></audio>
                 </div>
             </div>
         </div>

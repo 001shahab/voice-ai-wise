@@ -32,6 +32,7 @@ def main():
         'data/recordings',
         'data/faiss_index',
         'logs',
+        'static/img',
     ]
     
     for directory in directories:

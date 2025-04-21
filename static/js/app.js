@@ -6,6 +6,8 @@
  * - Communication with backend API
  * - Conversation display
  * - Audio playback
+ * - Knowledge base file upload
+ * - About audio playback
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +21,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const audioPlayer = document.getElementById('audioPlayer');
     const audioPlayerContainer = document.getElementById('audio-player-container');
     
+    // Upload elements
+    const knowledgeFile = document.getElementById('knowledgeFile');
+    const uploadButton = document.getElementById('uploadButton');
+    const uploadStatus = document.getElementById('uploadStatus');
+    
+    // About audio elements
+    const aboutAudio = document.getElementById('aboutAudio');
+    const aboutModal = document.getElementById('aboutModal');
+    const audioWaveAnimation = document.getElementById('audioWaveAnimation');
+    
+    // Set up the modal event listeners for playing/stopping audio
+    const modalElement = document.getElementById('aboutModal');
+    const modal = new bootstrap.Modal(modalElement);
+    
+    // Auto-play when modal opens
+    modalElement.addEventListener('shown.bs.modal', () => {
+        aboutAudio.play();
+        audioWaveAnimation.style.display = 'flex';
+    });
+    
+    // Stop when modal closes
+    modalElement.addEventListener('hidden.bs.modal', () => {
+        aboutAudio.pause();
+        aboutAudio.currentTime = 0;
+        audioWaveAnimation.style.display = 'none';
+    });
+    
     // Variables
     let mediaRecorder;
     let audioChunks = [];
@@ -29,6 +58,51 @@ document.addEventListener('DOMContentLoaded', () => {
     recordButton.addEventListener('click', startRecording);
     stopButton.addEventListener('click', stopRecording);
     resetButton.addEventListener('click', resetConversation);
+    uploadButton.addEventListener('click', uploadKnowledgeBase);
+    
+    // Upload knowledge base file
+    function uploadKnowledgeBase() {
+        // Check if file is selected
+        if (!knowledgeFile.files.length) {
+            uploadStatus.innerHTML = '<span class="text-danger">Please select a file first</span>';
+            return;
+        }
+        
+        const file = knowledgeFile.files[0];
+        
+        // Check file type
+        if (!file.name.toLowerCase().endsWith('.txt')) {
+            uploadStatus.innerHTML = '<span class="text-danger">Only .txt files are allowed</span>';
+            return;
+        }
+        
+        // Create FormData
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        // Update UI
+        uploadStatus.innerHTML = '<span class="text-info">Uploading...</span>';
+        
+        // Send to server
+        fetch('/upload_knowledge', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                uploadStatus.innerHTML = `<span class="text-success">File "${data.filename}" uploaded successfully!</span>`;
+                // Add system message
+                showMessage('Knowledge base updated. You can now ask questions about the new content.', 'system');
+            } else {
+                uploadStatus.innerHTML = `<span class="text-danger">Error: ${data.error}</span>`;
+            }
+        })
+        .catch(error => {
+            console.error('Error uploading file:', error);
+            uploadStatus.innerHTML = `<span class="text-danger">Upload failed: ${error.message}</span>`;
+        });
+    }
     
     // Check for microphone permissions
     async function checkMicrophonePermission() {

@@ -1,0 +1,77 @@
+2025-04-21 16:40:40,224 | INFO     | root:57 | Logging initialized with level INFO
+2025-04-21 16:40:40,224 | INFO     | root:58 | Log file: logs/fort_wise_20250421_164040.log
+2025-04-21 16:40:40,225 | INFO     | core.voice_processor:31 | Initializing Voice Processor...
+2025-04-21 16:40:40,225 | INFO     | core.stt:30 | Speech-to-Text module initialized
+2025-04-21 16:40:40,225 | INFO     | core.tts:30 | Text-to-Speech module initialized
+2025-04-21 16:40:40,225 | INFO     | core.knowledge_base:39 | FAISS index loaded from data/faiss_index/index.faiss
+2025-04-21 16:40:40,242 | INFO     | sentence_transformers.SentenceTransformer:211 | Use pytorch device_name: mps
+2025-04-21 16:40:40,242 | INFO     | sentence_transformers.SentenceTransformer:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-21 16:40:42,807 | INFO     | core.knowledge_base:50 | Sentence embedding model loaded
+2025-04-21 16:40:42,808 | INFO     | core.knowledge_base:58 | Loaded 77 text chunks from knowledge base
+2025-04-21 16:40:42,808 | INFO     | core.llm:40 | Language Model initialized with model: gpt-4o-mini
+2025-04-21 16:40:42,808 | INFO     | core.context_manager:24 | Context Manager initialized with max_history=10
+2025-04-21 16:40:42,808 | INFO     | core.voice_processor:43 | Voice Processor initialized successfully
+2025-04-21 16:40:42,808 | INFO     | __main__:36 | Voice processor initialized successfully
+2025-04-21 16:40:42,809 | INFO     | __main__:172 | Starting Fort Wise Voice AI Assistant on port 8000 (debug=True)
+2025-04-21 16:40:42,821 | WARNING  | werkzeug:97 |  * Debugger is active!
+2025-04-21 16:40:42,833 | INFO     | werkzeug:97 |  * Debugger PIN: 524-420-906
+2025-04-21 16:40:57,723 | INFO     | __main__:71 | Audio saved to data/recordings/89bd133f-5323-4fb9-b130-9459c64ffd5b.wav, processing...
+2025-04-21 16:40:57,723 | INFO     | core.voice_processor:55 | Converting speech to text from data/recordings/89bd133f-5323-4fb9-b130-9459c64ffd5b.wav
+2025-04-21 16:40:57,723 | INFO     | core.stt:43 | Transcribing audio from data/recordings/89bd133f-5323-4fb9-b130-9459c64ffd5b.wav
+2025-04-21 16:40:59,501 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2025-04-21 16:40:59,502 | INFO     | core.stt:64 | Transcription successful: What is forthwise?
+...
+2025-04-21 16:40:59,503 | INFO     | __main__:75 | Transcribed text: What is forthwise?
+
+2025-04-21 16:40:59,503 | INFO     | core.voice_processor:77 | Retrieving context for query: What is forthwise?
+
+2025-04-21 16:40:59,503 | INFO     | core.knowledge_base:160 | Searching for: What is forthwise?
+
+2025-04-21 16:40:59,983 | INFO     | core.knowledge_base:191 | Found 5 relevant chunks
+2025-04-21 16:40:59,983 | INFO     | core.voice_processor:106 | Generating response with LLM
+2025-04-21 16:40:59,983 | INFO     | core.llm:55 | Generating response for query: What is forthwise?
+
+2025-04-21 16:41:01,013 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 16:41:01,024 | INFO     | core.llm:100 | Generated response: Fort Wise is a process-driven approach that involv...
+2025-04-21 16:41:01,024 | INFO     | __main__:88 | Generated response: Fort Wise is a process-driven approach that involves a detailed analysis of a client's business needs, creating a scope and implementation plan, and managing the development and maintenance of products through structured sprints and collaboration among team members.
+2025-04-21 16:41:01,025 | INFO     | core.voice_processor:137 | Converting text to speech
+2025-04-21 16:41:01,025 | INFO     | core.tts:50 | Converting text to speech using voice: ash, speed: 1.0
+2025-04-21 16:41:02,376 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2025-04-21 16:41:06,984 | INFO     | core.tts:67 | Speech synthesis successful, saved to data/recordings/20f65e54-1080-4915-aa84-864f4c9e888b.wav
+2025-04-21 16:41:06,985 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:41:06] "POST /process_audio HTTP/1.1" 200 -
+2025-04-21 16:41:06,995 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:41:06] "[35m[1mGET /audio/20f65e54-1080-4915-aa84-864f4c9e888b.wav HTTP/1.1[0m" 206 -
+2025-04-21 16:41:54,478 | INFO     | __main__:71 | Audio saved to data/recordings/f1edd3fa-7b2d-4fd7-a701-c988816e201a.wav, processing...
+2025-04-21 16:41:54,479 | INFO     | core.voice_processor:55 | Converting speech to text from data/recordings/f1edd3fa-7b2d-4fd7-a701-c988816e201a.wav
+2025-04-21 16:41:54,479 | INFO     | core.stt:43 | Transcribing audio from data/recordings/f1edd3fa-7b2d-4fd7-a701-c988816e201a.wav
+2025-04-21 16:41:55,704 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2025-04-21 16:41:55,706 | INFO     | core.stt:64 | Transcription successful: Can you tell me what is the client offer in here?
+...
+2025-04-21 16:41:55,707 | INFO     | __main__:75 | Transcribed text: Can you tell me what is the client offer in here?
+
+2025-04-21 16:41:55,707 | INFO     | core.voice_processor:77 | Retrieving context for query: Can you tell me what is the client offer in here?
+
+2025-04-21 16:41:55,708 | INFO     | core.knowledge_base:160 | Searching for: Can you tell me what is the client offer in here?
+
+2025-04-21 16:41:55,826 | INFO     | core.knowledge_base:191 | Found 5 relevant chunks
+2025-04-21 16:41:55,826 | INFO     | core.voice_processor:106 | Generating response with LLM
+2025-04-21 16:41:55,826 | INFO     | core.llm:55 | Generating response for query: Can you tell me what is the client offer in here?
+
+2025-04-21 16:41:56,726 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 16:41:56,731 | INFO     | core.llm:100 | Generated response: The answer is not in my uploaded knowledge, but I ...
+2025-04-21 16:41:56,732 | INFO     | __main__:88 | Generated response: The answer is not in my uploaded knowledge, but I think the client offer likely includes a conversational AI solution designed for smooth and comfortable online communication between businesses and their customers.
+2025-04-21 16:41:56,732 | INFO     | core.voice_processor:137 | Converting text to speech
+2025-04-21 16:41:56,733 | INFO     | core.tts:50 | Converting text to speech using voice: ash, speed: 1.0
+2025-04-21 16:41:58,318 | INFO     | httpx:1025 | HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2025-04-21 16:42:01,491 | INFO     | core.tts:67 | Speech synthesis successful, saved to data/recordings/441a07ef-b718-4b7f-bad3-3e14429c3394.wav
+2025-04-21 16:42:01,492 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:42:01] "POST /process_audio HTTP/1.1" 200 -
+2025-04-21 16:42:01,510 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:42:01] "[35m[1mGET /audio/441a07ef-b718-4b7f-bad3-3e14429c3394.wav HTTP/1.1[0m" 206 -
+2025-04-21 16:42:17,635 | ERROR    | __main__:165 | Error resetting context: 'VoiceProcessor' object has no attribute 'reset_context'
+2025-04-21 16:42:17,639 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:42:17] "[35m[1mPOST /reset_context HTTP/1.1[0m" 500 -
+2025-04-21 16:43:16,090 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:43:16] "GET / HTTP/1.1" 200 -
+2025-04-21 16:43:16,109 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:43:16] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-04-21 16:43:16,109 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:43:16] "[36mGET /static/img/logo_3S.png HTTP/1.1[0m" 304 -
+2025-04-21 16:43:16,109 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:43:16] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-04-21 16:43:16,113 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:43:16] "[35m[1mGET /static/img/ABOUT_THIS.mp3 HTTP/1.1[0m" 206 -
+2025-04-21 16:43:16,114 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:43:16] "[35m[1mGET /static/img/ABOUT_THIS.mp3 HTTP/1.1[0m" 206 -
+2025-04-21 16:43:18,871 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:43:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-21 16:43:18,873 | INFO     | werkzeug:97 | 127.0.0.1 - - [21/Apr/2025 16:43:18] "[35m[1mGET /static/img/ABOUT_THIS.mp3 HTTP/1.1[0m" 206 -
