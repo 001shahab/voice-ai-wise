@@ -5,3 +5,4 @@ core/__pycache__
 data/recordings
 data/knowledge_base.txt
 utils/__pycache__
+.env

@@ -206,3 +206,5 @@ Recent improvements to the system include:
 ## Contributor
 
 Designed and developed by Prof. Shahab Anbarjafari - Tartu, Estonia.
+(c) 3S Holding OÜ. All rights are reserved.
+
