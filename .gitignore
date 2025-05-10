@@ -6,3 +6,4 @@ data/recordings
 data/knowledge_base.txt
 utils/__pycache__
 .env
+.env
